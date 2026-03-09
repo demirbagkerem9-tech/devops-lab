@@ -6,15 +6,15 @@ on:
       - main
 
 jobs:
-  build:
+  docker-build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Repo çek
         uses: actions/checkout@v4
 
-      - name: Dosyayı göster
-        run: cat app.txt
+      - name: Docker build
+        run: docker build -t devops-app .
 
-      - name: Pipeline çalıştı mesajı
-        run: echo "DevOps pipeline başarıyla çalıştı 🚀"
+      - name: Container test çalıştır
+        run: docker run devops-app
